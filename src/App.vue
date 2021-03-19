@@ -1,15 +1,30 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+<h1>Let's bake!</h1>
+<p>Select the ingredients that you want to mix together. Then, click "bake" and see what it makes!</p>
+  <Ingredient fieldId="eggs" v-model:ingredients="ingredients"/>
+  <Ingredient fieldId="milk" v-model:ingredients="ingredients"/>
+  <Ingredient fieldId="flour" v-model:ingredients="ingredients"/>
+  <Ingredient fieldId="butter" v-model:ingredients="ingredients"/>
+  <Ingredient fieldId="sugar" v-model:ingredients="ingredients"/>
+  <Baked v-model:ingredientsBaked="ingredients"/>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Ingredient from './components/Ingredient.vue';
+import Baked from './components/Baked.vue';
+import { ref } from 'vue';
 
 export default {
   name: 'App',
+  setup() {
+    const ingredients = ref ([])
+    return {
+      ingredients
+    }
+  },
   components: {
-    HelloWorld
+    Ingredient,
+    Baked,
   }
 }
 </script>
